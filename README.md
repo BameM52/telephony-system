@@ -25,7 +25,9 @@ once artifact are uploaded in to nexus, we run additional testings to know how t
 
 If all these test passes and we are satisfied, we are going to deploy the application to production.
 In doing that there are two ways
-In some of our projects, Jenkins with the help of a Dockerfile dockerise the application and a docker image is created. At this level we have configured that the Dockerfile is going to pull some images which are bases images(Jboss and or Tomcat). We pulled the images and scan to make sure that the base image that we want to copy our code into is free from Vulnerabilities and SQL injections etc. At this moment we dockerise the application and push to the image registery in Dockerhub or Amazone ECS
+In some of our projects, Jenkins with the help of a Dockerfile dockerise the application and a docker image is created. 
+At this level we have configured that the Dockerfile is going to pull some images which are bases images(Jboss and or Tomcat). We pulled the images and scan to make sure that the base image that we want to copy our code into is free from Vulnerabilities and SQL injections etc.
+At this point, we dockerise the application and push to the image registery in Dockerhub or Amazone ECS
  
 
 
