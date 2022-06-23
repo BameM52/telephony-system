@@ -25,9 +25,31 @@ once artifact are uploaded in to nexus, we run additional testings to know how t
 
 If all these test passes and we are satisfied, we are going to deploy the application to production.
 In doing that there are two ways
-In some of our projects, Jenkins with the help of a Dockerfile dockerise the application and a docker image is created. 
-At this level we have configured that the Dockerfile is going to pull some images which are bases images(Jboss and or Tomcat). We pulled the images and scan to make sure that the base image that we want to copy our code into is free from Vulnerabilities and SQL injections etc.
-At this point, we dockerise the application and push to the image registery in Dockerhub or Amazone ECS
+In some of our projects, Jenkins with the help of a Dockerfile, dockerise the application and a docker image is created. 
+At this level we configured the Dockerfile to pull some images which are base images(Jboss and or Tomcat). We pulled the images and scan to make sure that the base image that we want to copy our code into is free from Vulnerabilities and SQL injections etc.
+At this point, we dockerise the application and push to the image registery in Dockerhub or Amazone ECS.
+From this point the application will be deployed to a K8s cluster. 
+From the image registry, the jenkins jon will deploy the application to a K8s cluster. NOTE. that the jenkins integration from end to end using plugins. With all of these we have deployed our application to production and since the application is three tier and endusers talk to our application using the Loadbalancer and loabalancer is pointing to a DNS name or hostname like app.com.
+
+Since some of these services are micro services, we have configure and Ignix ingress because with the help of iginx increase we configure;
+- ssL termination. This implies that end users will access this application from an Https protocol
+- ssl redirect
+In addition to that inginx ingress provide an additional layer of security and it is important to note like i said earlier on that we are very heavy on security on our entire infrastructure
+
+At the level of the Jenkins pipeline we have securities in place like rbac, project based authorisation, we equally use AWS IAM role to ensure to sure that our environment is secured, 
+we also use ldap integration to ensure that our environment is completely secured
+
+
+At the level of our cluster security is very heavy and that is why we use namespace concept to restrick who can have access to the cluster with the help of cluster role and role binding to achieve this this.
+
+Interms of our overall infrastructure, our entire infrastructure runs on private sub netnet, We use terraform as IAAC to provision our infrastrcture in the cloud
+.
+We have our frondend running in the public subnet so in our VPC setting we use nac for security at the sub net 
+
+In some of the projects recently we have a senarior where when jenkins have done all the testing, the application is ready for deployment, jenkins with the help of plugins will ship the application to ansible. Jenkins will trigger a set of ansible playbooks
+
+In our environment, there are seven key concept that we want 
+
  
 
 
