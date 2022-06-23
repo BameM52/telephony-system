@@ -48,7 +48,19 @@ We have our frondend running in the public subnet so in our VPC setting we use n
 
 In some of the projects recently we have a senarior where when jenkins have done all the testing, the application is ready for deployment, jenkins with the help of plugins will ship the application to ansible. Jenkins will trigger a set of ansible playbooks
 
-In our environment, there are seven key concept that we want 
+In our environment, there are seven key concept that we have on our checklist we want to achieve automation, continous  development, continous integration, continous testing, continous delivery, continous deployment, continous monitoring and continous security because security goes with monitoring. 
+
+HOW WE MONITOR OUR ENVIRONMENT
+
+As our applications are running and we have federated micro services, we are making use of prometheus and grafana. We deploy them in our environment using helm chart. Once we deploy them what happens is that in prometheus, there is an alert manager and we have define alerting roles like
+- if CPU go above 75%, an alert is going to be triggered and email will be sent
+- if CPU go below 45%, an alert is going to be triggered and email will be sent
+- if our application latency is low - we have configured latency that within 10ms endusers should access our application and if our latency goes above what we have configured an alert is going to be triggered and email will be sent
+- If memory is low an alert is going to be triggered and email will be sent
+
+ 
+whatever is haapening in our cluster, we are using grafana to visualised it, in grafana prometheus is the data source
+
 
  
 
