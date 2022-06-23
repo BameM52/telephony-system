@@ -58,9 +58,13 @@ As our applications are running and we have federated micro services, we are mak
 - if our application latency is low - we have configured latency that within 10ms endusers should access our application and if our latency goes above what we have configured an alert is going to be triggered and email will be sent
 - If memory is low an alert is going to be triggered and email will be sent
 
- 
-whatever is haapening in our cluster, we are using grafana to visualised it, in grafana prometheus is the data source
-
+  Whatever is happening in our cluster, we are using grafana to visualised it, Grafana is a visualisation open source data monitoring tool. Grafana need data from a source and in this case prometheus is the data source for grafana because whatever is happening in our cluster prometheus has NodeExporters to scrap all the data, kubestatemetrix  and the prometheus server itself and it equally has a time series datanased and all this information is captured within prometheus deployment.
+  
+  In grafana, prometheus is the data source because whatever is happening in the cluster grafana will display it in a nice daskboard so we can know before our end client noticce that there is a problem. The grafana daskboard will be able to display it to us that some is about to go wrong and we get it fixed before our users are even aware.
+  Therefore we deploy prometheus and grafana in our environment so that if anything is hapening in our cluster, we should be able to visualised it becuase we are heavy on security and as such we need to monitor the application
+  
+  
+  
 
  
 
